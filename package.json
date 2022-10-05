@@ -19,6 +19,9 @@
     "recoil": "^0.7.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
+  "overrides": {
+    "autoprefixer": "10.4.12"
+  },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0-alpha.7",
     "@tailwindcss/forms": "^0.4.0",
