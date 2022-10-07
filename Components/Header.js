@@ -21,11 +21,11 @@ function Header() {
             <div className='flex justify-between max-w-6xl mx-5 lg:mx-auto'>
                 {/* left */}
                 <div onClick={() => router.push('/')} className='relative hidden lg:inline-grid w-24 cursor-pointer'>
-                    <Image src={logo1} layout='fill' objectFit='contain' />
+                    <Image src={logo1} layout='fill' objectFit='contain' priority />
                 </div>
 
                 <div onClick={() => router.push('/')} className='relative w-10 lg:hidden flex-shrink-0 cursor-pointer'>
-                    <Image src={logo2} layout='fill' objectFit='contain' />
+                    <Image src={logo2} layout='fill' objectFit='contain' priority />
                 </div>
 
                 {/* middle */}
@@ -41,7 +41,7 @@ function Header() {
                 {/* right */}
                 <div className="flex items-center justify-end space-x-4">
                     <HomeIcon onClick={() => router.push('/')} className='navBtn' />
-                    <MenuIcon onClick={() => setMenuOpen(!menuOpen)} className='h-6 md:hidden cursor-pointer' />
+                    <MenuIcon onClick={() => setMenuOpen(!menuOpen)} className='h-10 xs:h-6 md:hidden cursor-pointer' />
 
                     {session ? (
                         <>
@@ -53,7 +53,7 @@ function Header() {
                             <UserGroupIcon className='navBtn' />
                             <HeartIcon className='navBtn' />
 
-                            <img onClick={signOut} src={session.user.image} alt="Profile pic" className='h-10 w-10 rounded-full cursor-pointer' />
+                            <img onClick={signOut} src={session.user.image} alt="Profile pic" className='h-6 xs:h-8 sm:h-10 w-8 xs:w-8 sm:w-10 rounded-full cursor-pointer' />
                         </>
                     ) : (
                         <button onClick={signIn}>Sign In</button>
