@@ -70,7 +70,9 @@ function Header() {
                             <PaperAirplaneIcon className='rotate-45 menuBtn' />
                             <div className='-mt-8 ml-3 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
                         </div>
-                        <PlusCircleIcon className='menuBtn' onClick={() => setOpen(true)} />
+                        {
+                            session && <PlusCircleIcon className='menuBtn' onClick={() => setOpen(true)} />
+                        }
                         <UserGroupIcon className='menuBtn' />
                         <HeartIcon className='menuBtn' />
                     </div>
