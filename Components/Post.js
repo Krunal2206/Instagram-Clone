@@ -30,6 +30,8 @@ function Post({ id, username, userImg, img, caption }) {
             userImage: session.user.image,
             timestamp: serverTimestamp()
         });
+
+        setShowPicker(false)
     }
 
     useEffect(() => {
