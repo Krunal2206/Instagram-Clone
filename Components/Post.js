@@ -6,10 +6,14 @@ import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp, setDoc
 import { db } from '../firebase';
 import Moment from 'react-moment';
 import Picker from 'emoji-picker-react'
+import { useRecoilState } from 'recoil'
+import { deletePostModalState } from '../atoms/modalAtom'
+import DeletePostModal from '../Components/DeletePostModal'
 
 function Post({ id, username, userImg, img, caption }) {
 
     const { data: session } = useSession();
+    const [open, setOpen] = useRecoilState(deletePostModalState);
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
     const [likes, setLikes] = useState([]);
@@ -56,12 +60,6 @@ function Post({ id, username, userImg, img, caption }) {
         }
     }
 
-    const deletePost = async () => {
-        if (confirm("Do you want to delete post?")) {
-            await deleteDoc(doc(db, 'posts', id))
-        }
-    }
-
     const handleChat = () => {
         ref.current.focus();
     };
@@ -77,7 +75,7 @@ function Post({ id, username, userImg, img, caption }) {
                 <p className='flex-1 font-bold'>{username}</p>
 
                 {session && session.user.username == username &&
-                    <DotsHorizontalIcon className='h-5 btn' onClick={deletePost} />
+                    <DotsHorizontalIcon className='h-5 btn' onClick={() => setOpen(true)} />
                 }
             </div>
 
@@ -150,6 +148,8 @@ function Post({ id, username, userImg, img, caption }) {
                     </>
                 )
             }
+
+            <DeletePostModal id={id} />
         </div>
     )
 }
